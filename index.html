@@ -124,6 +124,52 @@
       font-size: 14px;
     }
 
+    /* Modal customizado para o jogo */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: #111;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 960px;
+      height: 600px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFA500;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .close-modal:hover {
+      color: #fff;
+    }
+
     /* Animações */
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -171,6 +217,10 @@
         font-size: 18px;
         padding: 12px 24px;
       }
+
+      .modal-content {
+        height: 80vh;
+      }
     }
   </style>
 </head>
@@ -191,7 +241,7 @@
     <section id="home">
       <h1>Pumpkin Head</h1>
       <p>and the Valley of Shadows</p>
-      <button class="btn-jogar" onclick="iniciarJogo()" aria-label="Iniciar o Jogo">Iniciar Jogo</button>
+      <button class="btn-jogar" onclick="abrirModal()" aria-label="Iniciar o Jogo">Iniciar Jogo</button>
     </section>
 
     <section id="historia">
@@ -218,29 +268,33 @@
     &copy; 2025 Pumpkin Head - Todos os direitos reservados.
   </footer>
 
+  <!-- Modal do jogo -->
+  <div id="modalJogo" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="fecharModal()">&times;</span>
+      <iframe src="jogo/index.html" allowfullscreen></iframe>
+    </div>
+  </div>
+
   <script>
-    function iniciarJogo() {
-      if (confirm("Deseja iniciar o jogo?")) {
-        alert("Jogo iniciado! (Aqui você pode redirecionar para o jogo real)");
-        // window.location.href = "jogo.html"; // Descomente se já tiver a página do jogo
+    function abrirModal() {
+      document.getElementById("modalJogo").style.display = "flex";
+    }
+
+    function fecharModal() {
+      document.getElementById("modalJogo").style.display = "none";
+      const iframe = document.querySelector("#modalJogo iframe");
+      iframe.src = iframe.src; // Reinicia o jogo ao fechar
+    }
+
+    // Fechar ao clicar fora da modal
+    window.onclick = function(event) {
+      const modal = document.getElementById("modalJogo");
+      if (event.target == modal) {
+        fecharModal();
       }
     }
   </script>
 
 </body>
 </html>
-/meu-site/
-├── index.html  ← seu site
-├── jogo/
-│   ├── index.html  ← jogo do Construct
-│   ├── c2runtime.js
-│   ├── data.json
-│   ├── media/
-<script>
-  function iniciarJogo() {
-    window.location.href = "PumpkinHead.c3p"; // caminho para o jogo exportado
-  }
-</script>
-
-
-
