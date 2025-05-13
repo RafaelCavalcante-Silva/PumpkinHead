@@ -1,0 +1,199 @@
+body {
+	margin: 0;
+	font-family: Raleway, Arial, sans-serif;
+	font-size: 16px;
+	padding-top: 100px;
+	position: relative;
+}
+
+/* Header */
+header {
+	width: 100%;
+	background: #FFCB00;
+	padding: 10px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+}
+
+header img {
+	height: 50px;
+}
+
+.menu {
+	font-size: 30px;
+	color: #fff;
+	cursor: pointer;
+	display: none;
+}
+
+/* Menu Navegação */
+#menu-nav {
+	display: flex;
+}
+
+#menu-nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+#menu-nav ul li {
+	margin: 15px;
+}
+
+#menu-nav ul li a {
+	text-decoration: none;
+	color: #FFF;
+	font-weight: 800;
+	transition: all 0.5s;
+}
+
+#menu-nav ul li a:hover {
+	color: #F00;
+}
+
+/* Banner */
+.banner img {
+	width: 100%;
+}
+
+/* Main */
+main {
+	width: 1000px;
+	max-width: 95%;
+	margin: auto;
+}
+
+main h1, footer p {
+	text-align: center;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+
+.grid .coluna img {
+	width: 100%;
+}
+
+.grid .coluna {
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+/* Botão */
+.btn {
+	background: #FFCB00;
+	text-decoration: none;
+	padding: 10px 30px;
+	display: inline-block;
+	color: #000;
+	border-radius: 5px;
+	transition: 0.5s;
+}
+
+.btn:hover {
+	background: #f00;
+	color: #FFCB00;
+}
+
+/* Footer */
+footer {
+	padding: 20px 0;
+	background: #FFCB00;
+	text-align: center;
+}
+
+footer a {
+	background: #fff;
+	text-decoration: none;
+	margin: 10px;
+	color: #000;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	line-height: 30px;
+	transition: all 0.5s;
+}
+
+footer a:hover {
+	background: #f00;
+	color: #fff;
+}
+
+/* Overlay fundo escuro */
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	display: none;
+	z-index: 5;
+}
+
+#overlay.ativo {
+	display: block;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .menu {
+    display: block;
+  }
+
+  #menu-nav {
+    flex-direction: column;
+    align-items: center;
+    background: #FFCB00;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease;
+  }
+
+  #menu-nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #menu-nav ul li {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  #menu-nav.ativo {
+    max-height: 300px; /* Abre o menu */
+  }
+}
+
+@media (max-width: 420px) {
+	.banner {
+		display: none;
+	}
+	main {
+		width: 95%;
+	}
+	.grid {
+		grid-template-columns: 1fr;
+	}
+	header img {
+		width: 150px;
+	}
+}
